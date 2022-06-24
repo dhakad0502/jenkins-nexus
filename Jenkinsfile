@@ -13,7 +13,7 @@ pipeline {
         }  
 	  stage('Maven Build') {
 	    steps {
-		    bat 'mvn package -DskipTests=true'
+		    sh "mvn -Dmaven.test.failure.ignore=true install"
 	    }
 	}
    }
