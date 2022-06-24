@@ -12,11 +12,18 @@ pipeline {
                          
                     branches: [[name: '*/main']], extensions: [], 
                          
-                    userRemoteConfigs: [[credentialsId: 'Git_CRED', url: 'https://github.com/dhakad0502/jenkins-nexus.git']]])
-                
+                    userRemoteConfigs: [[credentialsId: 'Git_CRED', url: 'https://github.com/dhakad0502/jenkins-nexus.git']]]) 
                
             }
         }
       
+        stage("Maven Build") {
+            steps {
+                script {
+                    sh "mvn package -DskipTests=true"
+                }
+            }
+        } 
+        
    }
 }
