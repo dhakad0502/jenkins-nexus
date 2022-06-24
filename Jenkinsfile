@@ -1,6 +1,10 @@
 pipeline {
     agent any
     
+    tools {
+	maven 'MAVEN'
+    }
+    
     stages {
         stage("Clone code from GitHub") {
             steps {
@@ -10,5 +14,10 @@ pipeline {
             }
         }        
      }
+    stage('Maven Build') {
+	    steps {
+		    sh "mvn package -DskipTests=true"
+	    }
+	}
    }
 
