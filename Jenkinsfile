@@ -15,12 +15,6 @@ pipeline {
                     userRemoteConfigs: [[credentialsId: 'Git_CRED', url: 'https://github.com/dhakad0502/jenkins-nexus.git']]])
             }
         }
-       stage("Maven Build") {
-            steps {
-                script {
-                    sh "mvn -Dmaven.test.failure.ignore=true clean package"
-                }
-            }
-        } 
+      
    }
 }
