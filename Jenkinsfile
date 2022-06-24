@@ -1,23 +1,22 @@
 pipeline {
     agent any
-    
     tools {
 	maven 'MAVEN'
     }
-    
     stages {
         stage("Clone code from GitHub") {
             steps {
                 script {
-                    
-                       git branch: 'main', credentialsId: 'Git_CRED', url: 'https://github.com/dhakad0502/jenkins-nexus.git'}
+                       git branch: 'main', credentialsId: 'Git_CRED', url: 'https://github.com/dhakad0502/jenkins-nexus.git'
+		}
             }
-        }        
-     }
-    stage('Maven Build') {
+        }  
+	  stage('Maven Build') {
 	    steps {
 		    sh "mvn package -DskipTests=true"
 	    }
 	}
    }
+}
+    
 
