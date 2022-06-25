@@ -11,6 +11,13 @@ pipeline {
         NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
     }
     stages {
+        stage("Maven Build") {
+            steps {
+                script {
+                    sh "mvn clean install -f my-app/pom.xml"
+                }
+            }
+        }
         stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
